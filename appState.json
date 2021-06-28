@@ -1,0 +1,387 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "ce415f20-6e2d-4030-bf35-1dc87bba9060": {
+        "id": "ce415f20-6e2d-4030-bf35-1dc87bba9060",
+        "parent": null,
+        "name": "kumu.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "kumu.js",
+        "cursor": {
+          "lineNumber": 14,
+          "column": 36
+        },
+        "config": {
+          "runtime": "nodejs14.x",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 128,
+          "layers": [],
+          "name": "kumu"
+        },
+        "triggers": [
+          {
+            "resourceName": "apigSNIAPIhelloany",
+            "config": {}
+          }
+        ],
+        "lastUpdated": 1624881863187,
+        "testCases": {
+          "5c7dbcea-88f7-463e-8de4-1790b6a9e5df": {
+            "id": "5c7dbcea-88f7-463e-8de4-1790b6a9e5df",
+            "name": "Test event",
+            "functionId": "ce415f20-6e2d-4030-bf35-1dc87bba9060",
+            "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
+            "eventTemplate": "hello-world"
+          }
+        }
+      },
+      "fcfbcb53-28f0-435c-8548-4c06fbe4fd6d": {
+        "id": "fcfbcb53-28f0-435c-8548-4c06fbe4fd6d",
+        "parent": null,
+        "name": "package.json",
+        "type": "JSON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "package.json"
+      }
+    },
+    "openFiles": [
+      "ce415f20-6e2d-4030-bf35-1dc87bba9060"
+    ],
+    "currentFileId": "ce415f20-6e2d-4030-bf35-1dc87bba9060",
+    "resources": {
+      "apigSNIAPIhelloany": {
+        "name": "apigSNIAPIhelloany",
+        "type": "API_GATEWAY",
+        "config": {
+          "apiType": 1,
+          "apiMode": 1,
+          "apiName": "SNI-API",
+          "apiId": "a6bevrende",
+          "endpointType": "EDGE",
+          "rootResourceId": "u8hjjglka9",
+          "existingResources": {
+            "/hello": "7gtruk",
+            "/": "u8hjjglka9"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/hello",
+          "resourceName": "hello",
+          "resourceId": "7gtruk",
+          "restMethod": "ANY",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "test",
+          "stageDeploymentId": "agrq9k",
+          "mode": 1
+        }
+      },
+      "cognitoTestCognito": {
+        "name": "cognitoTestCognito",
+        "type": "CognitoIdentityServiceProvider",
+        "config": {
+          "mode": 1,
+          "name": "Test Cognito",
+          "arn": "arn:aws:cognito-idp:us-east-1:318300609668:userpool/us-east-1_HdYJb7Znp",
+          "userPool": {
+            "Id": "us-east-1_HdYJb7Znp",
+            "Name": "Test Cognito",
+            "LambdaConfig": {
+              "CustomMessage": "arn:aws:lambda:us-east-1:318300609668:function:testyyyinduuuu"
+            },
+            "Policies": {
+              "PasswordPolicy": {
+                "MinimumLength": 8,
+                "RequireUppercase": true,
+                "RequireLowercase": true,
+                "RequireNumbers": true,
+                "RequireSymbols": true,
+                "TemporaryPasswordValidityDays": 7
+              }
+            },
+            "VerificationMessageTemplate": {
+              "DefaultEmailOption": "CONFIRM_WITH_CODE"
+            },
+            "MfaConfiguration": "OFF",
+            "EmailConfiguration": {
+              "EmailSendingAccount": "COGNITO_DEFAULT"
+            },
+            "SmsConfiguration": {
+              "SnsCallerArn": "arn:aws:iam::318300609668:role/service-role/TestCognito-SMS-Role",
+              "ExternalId": "a5aa9c3d-325f-4d4c-bd3e-06f1485e8375"
+            },
+            "UserPoolTags": {},
+            "AdminCreateUserConfig": {
+              "AllowAdminCreateUserOnly": false,
+              "UnusedAccountValidityDays": 7
+            },
+            "SchemaAttributes": [
+              {
+                "Name": "sub",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": false,
+                "Required": true,
+                "StringAttributeConstraints": {
+                  "MinLength": "1",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "given_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "family_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "middle_name",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "nickname",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "preferred_username",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "profile",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "picture",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "website",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "email",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "email_verified",
+                "AttributeDataType": "Boolean",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false
+              },
+              {
+                "Name": "gender",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "birthdate",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "10",
+                  "MaxLength": "10"
+                }
+              },
+              {
+                "Name": "zoneinfo",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "locale",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "phone_number",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "phone_number_verified",
+                "AttributeDataType": "Boolean",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false
+              },
+              {
+                "Name": "address",
+                "AttributeDataType": "String",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "StringAttributeConstraints": {
+                  "MinLength": "0",
+                  "MaxLength": "2048"
+                }
+              },
+              {
+                "Name": "updated_at",
+                "AttributeDataType": "Number",
+                "DeveloperOnlyAttribute": false,
+                "Mutable": true,
+                "Required": false,
+                "NumberAttributeConstraints": {
+                  "MinValue": "0"
+                }
+              }
+            ]
+          }
+        }
+      }
+    },
+    "customTemplate": {
+      "syntax": "JSON",
+      "overrideDefault": false,
+      "dialect": null,
+      "definitions": null
+    },
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "aws-sdk": {
+          "name": "aws-sdk",
+          "language": "nodejs",
+          "version": "2.817.0",
+          "dev": true,
+          "notRemovable": false
+        }
+      }
+    }
+  },
+  "PROJECT_META": {
+    "sigmaVersion": "1.8.1",
+    "projectName": "kumu",
+    "projectDescription": "",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "language": "nodejs",
+    "platformRegions": {},
+    "lastSave": 1624883687211
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "kumu",
+      "url": "https://github.com/Kumudikatest/kumu"
+    }
+  }
+}
