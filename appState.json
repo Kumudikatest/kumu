@@ -1,8 +1,8 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "ce415f20-6e2d-4030-bf35-1dc87bba9060": {
-        "id": "ce415f20-6e2d-4030-bf35-1dc87bba9060",
+      "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543": {
+        "id": "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543",
         "parent": null,
         "name": "kumu.js",
         "type": "JS_LAMBDA",
@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "kumu.js",
         "cursor": {
-          "lineNumber": 14,
-          "column": 36
+          "lineNumber": 1,
+          "column": 1
         },
         "config": {
           "runtime": "nodejs14.x",
@@ -22,25 +22,20 @@
           "layers": [],
           "name": "kumu"
         },
-        "triggers": [
-          {
-            "resourceName": "apigSNIAPIhelloany",
-            "config": {}
-          }
-        ],
-        "lastUpdated": 1624881863187,
+        "triggers": [],
+        "lastUpdated": 1627552136133,
         "testCases": {
-          "5c7dbcea-88f7-463e-8de4-1790b6a9e5df": {
-            "id": "5c7dbcea-88f7-463e-8de4-1790b6a9e5df",
+          "4ba756fd-49f6-41ca-aa12-843ccf8c0908": {
+            "id": "4ba756fd-49f6-41ca-aa12-843ccf8c0908",
             "name": "Test event",
-            "functionId": "ce415f20-6e2d-4030-bf35-1dc87bba9060",
+            "functionId": "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543",
             "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
             "eventTemplate": "hello-world"
           }
         }
       },
-      "fcfbcb53-28f0-435c-8548-4c06fbe4fd6d": {
-        "id": "fcfbcb53-28f0-435c-8548-4c06fbe4fd6d",
+      "059a2a40-84d0-478b-84ae-d9d4986d0e11": {
+        "id": "059a2a40-84d0-478b-84ae-d9d4986d0e11",
         "parent": null,
         "name": "package.json",
         "type": "JSON_FILE",
@@ -51,34 +46,75 @@
       }
     },
     "openFiles": [
-      "ce415f20-6e2d-4030-bf35-1dc87bba9060"
+      "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543"
     ],
-    "currentFileId": "ce415f20-6e2d-4030-bf35-1dc87bba9060",
+    "currentFileId": "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543",
     "resources": {
-      "apigSNIAPIhelloany": {
-        "name": "apigSNIAPIhelloany",
+      "apigTestAPIDDBresourceany": {
+        "name": "apigTestAPIDDBresourceany",
         "type": "API_GATEWAY",
         "config": {
           "apiType": 1,
           "apiMode": 1,
-          "apiName": "SNI-API",
-          "apiId": "a6bevrende",
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
           "endpointType": "EDGE",
-          "rootResourceId": "u8hjjglka9",
+          "rootResourceId": "h2lelj6j7k",
           "existingResources": {
-            "/hello": "7gtruk",
-            "/": "u8hjjglka9"
+            "/DDBresource": "0aenia",
+            "/DDBresource/check": "70q21i",
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/newchange/test": "k6pdhn",
+            "/newchange": "q1ox7l",
+            "/testWithSlash": "q4m4g1",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk"
           },
           "resourceMode": 1,
-          "resourcePath": "/hello",
-          "resourceName": "hello",
-          "resourceId": "7gtruk",
+          "resourcePath": "/DDBresource",
+          "resourceName": "DDBresource",
+          "resourceId": "0aenia",
           "restMethod": "ANY",
           "proxyIntegration": false,
           "enableCORS": false,
           "stageMode": 1,
-          "stageName": "test",
-          "stageDeploymentId": "agrq9k",
+          "stageName": "socks",
+          "stageDeploymentId": "xga8ql",
+          "mode": 1
+        }
+      },
+      "apigTestAPIMyLambdapost": {
+        "name": "apigTestAPIMyLambdapost",
+        "type": "API_GATEWAY",
+        "config": {
+          "apiType": 1,
+          "apiMode": 1,
+          "apiName": "TestAPI",
+          "apiId": "0itznun7w3",
+          "endpointType": "EDGE",
+          "rootResourceId": "h2lelj6j7k",
+          "existingResources": {
+            "/DDBresource": "0aenia",
+            "/DDBresource/check": "70q21i",
+            "/MyLambda": "98nqbj",
+            "/": "h2lelj6j7k",
+            "/newchange/test": "k6pdhn",
+            "/newchange": "q1ox7l",
+            "/testWithSlash": "q4m4g1",
+            "/testtwospeciallambda": "q4szm3",
+            "/testtwospecialkumutest": "wey3lk"
+          },
+          "resourceMode": 1,
+          "resourcePath": "/MyLambda",
+          "resourceName": "MyLambda",
+          "resourceId": "98nqbj",
+          "restMethod": "POST",
+          "proxyIntegration": false,
+          "enableCORS": false,
+          "stageMode": 1,
+          "stageName": "socks",
+          "stageDeploymentId": "xga8ql",
           "mode": 1
         }
       },
@@ -352,6 +388,14 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "dadas",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
       }
     ],
     "packageJSON": {
@@ -367,7 +411,7 @@
     }
   },
   "PROJECT_META": {
-    "sigmaVersion": "1.8.1",
+    "sigmaVersion": "1.9.2",
     "projectName": "kumu",
     "projectDescription": "",
     "projectVersion": "1.0.0",
@@ -375,7 +419,7 @@
     "platform": "AWS",
     "language": "nodejs",
     "platformRegions": {},
-    "lastSave": 1624883687211
+    "lastSave": 1627562844743
   },
   "VCS_STATE": {
     "provider": "GitHub",
