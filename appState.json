@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "kumu.js",
         "cursor": {
-          "lineNumber": 1,
-          "column": 1
+          "lineNumber": 17,
+          "column": 13
         },
         "config": {
           "runtime": "nodejs14.x",
@@ -419,13 +419,13 @@
     "platform": "AWS",
     "language": "nodejs",
     "platformRegions": {},
-    "lastSave": 1627562844743
+    "lastSave": 1627563587963
   },
   "VCS_STATE": {
     "provider": "GitHub",
     "repo": {
       "name": "kumu",
-      "url": "https://github.com/Kumudikatest/kumu"
+      "url": "https://github.com/kumudikatest/kumu"
     }
   }
 }
