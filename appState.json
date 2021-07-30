@@ -17,8 +17,8 @@
         "config": {
           "runtime": "nodejs14.x",
           "handler": "handler",
-          "timeout": 60,
-          "memory": 128,
+          "timeout": 100,
+          "memory": 320,
           "layers": [],
           "name": "kumu"
         },
@@ -36,7 +36,7 @@
             "config": {}
           }
         ],
-        "lastUpdated": 1627642492538,
+        "lastUpdated": 1627649616387,
         "testCases": {
           "62db35bb-c09f-45ab-9d39-20b688c91752": {
             "id": "62db35bb-c09f-45ab-9d39-20b688c91752",
@@ -56,12 +56,95 @@
         "children": [],
         "isRemovable": true,
         "filePath": "package.json"
+      },
+      "c43be2fc-65ca-4a42-b339-061503faf9ff": {
+        "id": "c43be2fc-65ca-4a42-b339-061503faf9ff",
+        "parent": null,
+        "name": "Sub",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "ced2854d-0958-43ed-b96c-a6df993c6a29",
+          "9254a05c-97d8-4ab4-82e1-f0b4bc492748",
+          "829c8ee4-5c37-4457-afce-e2d8f4e597ad"
+        ],
+        "isRemovable": true,
+        "filePath": "Sub"
+      },
+      "ced2854d-0958-43ed-b96c-a6df993c6a29": {
+        "id": "ced2854d-0958-43ed-b96c-a6df993c6a29",
+        "parent": "c43be2fc-65ca-4a42-b339-061503faf9ff",
+        "name": "knew.js",
+        "type": "JS_LAMBDA",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "Sub/knew.js",
+        "cursor": {
+          "lineNumber": 1,
+          "column": 1
+        },
+        "config": {
+          "runtime": "nodejs12.x",
+          "handler": "handler",
+          "timeout": 60,
+          "memory": 256,
+          "layers": [],
+          "name": "subii"
+        },
+        "triggers": [],
+        "lastUpdated": 1627649646808
+      },
+      "56564c12-f7a0-4fad-86bf-7b5ef530cfa7": {
+        "id": "56564c12-f7a0-4fad-86bf-7b5ef530cfa7",
+        "parent": null,
+        "name": "asdda.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "asdda.js",
+        "lastUpdated": 1627649645033
+      },
+      "9254a05c-97d8-4ab4-82e1-f0b4bc492748": {
+        "id": "9254a05c-97d8-4ab4-82e1-f0b4bc492748",
+        "parent": "c43be2fc-65ca-4a42-b339-061503faf9ff",
+        "name": "sdf.py",
+        "type": "PYTHON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "Sub/sdf.py",
+        "lastUpdated": 1627649631865
+      },
+      "829c8ee4-5c37-4457-afce-e2d8f4e597ad": {
+        "id": "829c8ee4-5c37-4457-afce-e2d8f4e597ad",
+        "parent": "c43be2fc-65ca-4a42-b339-061503faf9ff",
+        "name": "__init__.py",
+        "type": "PYTHON_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "Sub/__init__.py"
+      },
+      "903e6e7f-726b-4b87-aef4-b4a3ae5b12ab": {
+        "id": "903e6e7f-726b-4b87-aef4-b4a3ae5b12ab",
+        "parent": null,
+        "name": "Authorizer.js",
+        "type": "JS_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "Authorizer.js"
       }
     },
     "openFiles": [
-      "f4094fc8-7fc6-49c4-a9fe-b67f6e47906e"
+      "f4094fc8-7fc6-49c4-a9fe-b67f6e47906e",
+      "ced2854d-0958-43ed-b96c-a6df993c6a29",
+      "56564c12-f7a0-4fad-86bf-7b5ef530cfa7",
+      "9254a05c-97d8-4ab4-82e1-f0b4bc492748"
     ],
-    "currentFileId": "f4094fc8-7fc6-49c4-a9fe-b67f6e47906e",
+    "currentFileId": "ced2854d-0958-43ed-b96c-a6df993c6a29",
     "resources": {
       "apigTestAPIDDBresourceany": {
         "name": "apigTestAPIDDBresourceany",
@@ -436,6 +519,16 @@
         "name": "translateResource",
         "type": "Translate",
         "config": {}
+      },
+      "storagekbuckput": {
+        "name": "storagekbuckput",
+        "type": "CloudStorage",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "name": "kbuckput"
+          }
+        }
       }
     },
     "customTemplate": {
@@ -452,6 +545,30 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "GCP_SERVICE_ACCOUNT_KEY",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "GCP_PROJECT",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      },
+      {
+        "lambdaId": "all",
+        "varKey": "k",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": true
       }
     ],
     "packageJSON": {
@@ -462,6 +579,19 @@
           "version": "2.817.0",
           "dev": true,
           "notRemovable": false
+        },
+        "googleapis": {
+          "name": "googleapis",
+          "language": "nodejs",
+          "version": "29.0.0",
+          "dev": false,
+          "notRemovable": false
+        },
+        "mysql": {
+          "name": "mysql",
+          "version": "2.18.1",
+          "dev": false,
+          "language": "nodejs"
         }
       }
     }
@@ -475,7 +605,7 @@
     "platform": "AWS",
     "language": "nodejs",
     "platformRegions": {},
-    "lastSave": 1627649561011
+    "lastSave": 1627649803542
   },
   "VCS_STATE": {
     "provider": "GitHub",
