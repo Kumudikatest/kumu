@@ -1,8 +1,8 @@
 {
   "EDITOR_STATE": {
     "allProjectFiles": {
-      "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543": {
-        "id": "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543",
+      "f4094fc8-7fc6-49c4-a9fe-b67f6e47906e": {
+        "id": "f4094fc8-7fc6-49c4-a9fe-b67f6e47906e",
         "parent": null,
         "name": "kumu.js",
         "type": "JS_LAMBDA",
@@ -11,8 +11,8 @@
         "isRemovable": true,
         "filePath": "kumu.js",
         "cursor": {
-          "lineNumber": 17,
-          "column": 13
+          "lineNumber": 67,
+          "column": 27
         },
         "config": {
           "runtime": "nodejs14.x",
@@ -22,20 +22,33 @@
           "layers": [],
           "name": "kumu"
         },
-        "triggers": [],
-        "lastUpdated": 1627552136133,
+        "triggers": [
+          {
+            "resourceName": "apigTestAPIDDBresourceany",
+            "config": {}
+          },
+          {
+            "resourceName": "cweJBBlog",
+            "config": {}
+          },
+          {
+            "resourceName": "alexaSK15970ba19cb64f6f9b22e6d5710707f0",
+            "config": {}
+          }
+        ],
+        "lastUpdated": 1627642492538,
         "testCases": {
-          "4ba756fd-49f6-41ca-aa12-843ccf8c0908": {
-            "id": "4ba756fd-49f6-41ca-aa12-843ccf8c0908",
+          "62db35bb-c09f-45ab-9d39-20b688c91752": {
+            "id": "62db35bb-c09f-45ab-9d39-20b688c91752",
             "name": "Test event",
-            "functionId": "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543",
-            "event": "{\r\n    \"key1\": \"value1\",\r\n    \"key2\": \"value2\",\r\n    \"key3\": \"value3\"\r\n}",
+            "functionId": "f4094fc8-7fc6-49c4-a9fe-b67f6e47906e",
+            "event": "{\"key1\": \"value1\", \"key2\": \"value2\", \"key3\": \"value3\"}",
             "eventTemplate": "hello-world"
           }
         }
       },
-      "059a2a40-84d0-478b-84ae-d9d4986d0e11": {
-        "id": "059a2a40-84d0-478b-84ae-d9d4986d0e11",
+      "af5dabb6-460d-4222-9ebe-5ab1f4484804": {
+        "id": "af5dabb6-460d-4222-9ebe-5ab1f4484804",
         "parent": null,
         "name": "package.json",
         "type": "JSON_FILE",
@@ -46,9 +59,9 @@
       }
     },
     "openFiles": [
-      "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543"
+      "f4094fc8-7fc6-49c4-a9fe-b67f6e47906e"
     ],
-    "currentFileId": "474f54e7-adc5-40f0-b7f8-7e9f3f7c4543",
+    "currentFileId": "f4094fc8-7fc6-49c4-a9fe-b67f6e47906e",
     "resources": {
       "apigTestAPIDDBresourceany": {
         "name": "apigTestAPIDDBresourceany",
@@ -77,45 +90,31 @@
           "resourceId": "0aenia",
           "restMethod": "ANY",
           "proxyIntegration": false,
-          "enableCORS": false,
+          "enableCORS": true,
           "stageMode": 1,
-          "stageName": "socks",
-          "stageDeploymentId": "xga8ql",
+          "stageName": "test12",
+          "stageDeploymentId": "r03kfj",
           "mode": 1
         }
       },
-      "apigTestAPIMyLambdapost": {
-        "name": "apigTestAPIMyLambdapost",
-        "type": "API_GATEWAY",
+      "cweJBBlog": {
+        "name": "cweJBBlog",
+        "type": "CLOUD_WATCH",
         "config": {
-          "apiType": 1,
-          "apiMode": 1,
-          "apiName": "TestAPI",
-          "apiId": "0itznun7w3",
-          "endpointType": "EDGE",
-          "rootResourceId": "h2lelj6j7k",
-          "existingResources": {
-            "/DDBresource": "0aenia",
-            "/DDBresource/check": "70q21i",
-            "/MyLambda": "98nqbj",
-            "/": "h2lelj6j7k",
-            "/newchange/test": "k6pdhn",
-            "/newchange": "q1ox7l",
-            "/testWithSlash": "q4m4g1",
-            "/testtwospeciallambda": "q4szm3",
-            "/testtwospecialkumutest": "wey3lk"
-          },
-          "resourceMode": 1,
-          "resourcePath": "/MyLambda",
-          "resourceName": "MyLambda",
-          "resourceId": "98nqbj",
-          "restMethod": "POST",
-          "proxyIntegration": false,
-          "enableCORS": false,
-          "stageMode": 1,
-          "stageName": "socks",
-          "stageDeploymentId": "xga8ql",
-          "mode": 1
+          "name": "JBBlog",
+          "eventBusName": "default",
+          "mode": 1,
+          "arn": "arn:aws:events:us-east-1:318300609668:rule/JBBlog"
+        }
+      },
+      "alexaSK15970ba19cb64f6f9b22e6d5710707f0": {
+        "name": "alexaSK15970ba19cb64f6f9b22e6d5710707f0",
+        "type": "ALEXA",
+        "config": {
+          "type": 1,
+          "verifiedID": true,
+          "skillID": "amzn1.ask.skill.15970ba1-9cb6-4f6f-9b22-e6d5710707f0",
+          "applicationID": ""
         }
       },
       "cognitoTestCognito": {
@@ -372,6 +371,71 @@
             ]
           }
         }
+      },
+      "ddbKChineseAnimal": {
+        "name": "ddbKChineseAnimal",
+        "type": "DynamoDB",
+        "config": {
+          "mode": 1,
+          "table": {
+            "arn": "arn:aws:dynamodb:us-east-1:318300609668:table/KChineseAnimal",
+            "name": "KChineseAnimal",
+            "partitionKey": "BirthYear",
+            "partitionKeyType": "N",
+            "hasSortKey": false,
+            "sortKey": "",
+            "sortKeyType": "",
+            "payPerRequest": true,
+            "mode": 1,
+            "secondaryIndexes": {}
+          }
+        }
+      },
+      "s3cloud9Ktest": {
+        "name": "s3cloud9Ktest",
+        "type": "S3",
+        "config": {
+          "mode": 1,
+          "bucket": {
+            "name": "cloud9-ktest"
+          }
+        }
+      },
+      "snsNotifications": {
+        "name": "snsNotifications",
+        "type": "SNS",
+        "config": {
+          "topicMode": 1,
+          "topicName": "Notifications",
+          "topicArn": "arn:aws:sns:us-east-1:318300609668:Notifications",
+          "snsType": 0,
+          "subscriptions": []
+        }
+      },
+      "sqsKTestSQS": {
+        "name": "sqsKTestSQS",
+        "type": "SQS",
+        "config": {
+          "mode": 1,
+          "existing": true,
+          "name": "KTestSQS",
+          "url": "https://sqs.us-east-1.amazonaws.com/318300609668/KTestSQS",
+          "deliveryDelay": "0",
+          "deliveryDelayUnit": "seconds",
+          "queueType": "standardQueue",
+          "defaultVisibilityTimeout": "30",
+          "defaultVisibilityTimeoutUnit": "seconds",
+          "messageRetentionPeriod": "345600",
+          "messageRetentionPeriodUnit": "seconds",
+          "maximumMessageSize": 256,
+          "receiveMessageWaitTime": "0",
+          "queueARN": "arn:aws:sqs:us-east-1:318300609668:KTestSQS"
+        }
+      },
+      "translateResource": {
+        "name": "translateResource",
+        "type": "Translate",
+        "config": {}
       }
     },
     "customTemplate": {
@@ -388,14 +452,6 @@
         "shouldPersist": false,
         "displayOnly": false,
         "editable": false
-      },
-      {
-        "lambdaId": "all",
-        "varKey": "dadas",
-        "varValue": null,
-        "shouldPersist": false,
-        "displayOnly": false,
-        "editable": true
       }
     ],
     "packageJSON": {
@@ -411,7 +467,7 @@
     }
   },
   "PROJECT_META": {
-    "sigmaVersion": "1.9.2",
+    "sigmaVersion": "1.9.3",
     "projectName": "kumu",
     "projectDescription": "",
     "projectVersion": "1.0.0",
@@ -419,13 +475,13 @@
     "platform": "AWS",
     "language": "nodejs",
     "platformRegions": {},
-    "lastSave": 1627563587963
+    "lastSave": 1627649561011
   },
   "VCS_STATE": {
     "provider": "GitHub",
     "repo": {
       "name": "kumu",
-      "url": "https://github.com/kumudikatest/kumu"
+      "url": "https://github.com/Kumudikatest/kumu"
     }
   }
 }

@@ -9,16 +9,39 @@
     "lambdaCodeKeyParameter": {
       "Type": "String",
       "Description": "S3 key of the Lambda deployment package"
-    },
-    "envVardadasParameter": {
-      "Type": "String",
-      "Description": "Value of the environment variable: dadas, for all Lambdas"
     }
   },
   "Outputs": {
+    "apigTestAPIDDBresourceANY": {
+      "Description": "URL of TestAPI/DDBresource:ANY endpoint",
+      "Value": {
+        "Fn::Join": [
+          "",
+          [
+            "https://",
+            "0itznun7w3",
+            ".execute-api.",
+            {
+              "Ref": "AWS::Region"
+            },
+            ".amazonaws.com/",
+            "test12",
+            "/DDBresource"
+          ]
+        ]
+      }
+    },
     "cognitoTestCognito": {
       "Description": "ID of Cognito user pool Test Cognito",
       "Value": "us-east-1_HdYJb7Znp"
+    },
+    "snsNotifications": {
+      "Description": "ARN of SNS topic Notifications",
+      "Value": "arn:aws:sns:us-east-1:318300609668:Notifications"
+    },
+    "sqsKTestSQS": {
+      "Description": "URL of SQS queue KTestSQS",
+      "Value": "https://sqs.us-east-1.amazonaws.com/318300609668/KTestSQS"
     },
     "kumu": {
       "Description": "ARN of Lambda function kumu",
@@ -31,6 +54,78 @@
     }
   },
   "Resources": {
+    "apigTestAPIDDBresourceANY": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "RestApiId": "0itznun7w3",
+        "ResourceId": "0aenia",
+        "HttpMethod": "ANY",
+        "AuthorizationType": "NONE",
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Origin": true
+            }
+          }
+        ],
+        "Integration": {
+          "Type": "AWS",
+          "IntegrationHttpMethod": "POST",
+          "Uri": {
+            "Fn::Sub": "arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${kumu.Arn}/invocations"
+          },
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "apigTestAPIDDBresourceCors": {
+      "Type": "AWS::ApiGateway::Method",
+      "Properties": {
+        "RestApiId": "0itznun7w3",
+        "ResourceId": "0aenia",
+        "HttpMethod": "OPTIONS",
+        "AuthorizationType": "NONE",
+        "Integration": {
+          "Type": "MOCK",
+          "IntegrationResponses": [
+            {
+              "StatusCode": "200",
+              "ResponseParameters": {
+                "method.response.header.Access-Control-Allow-Headers": "'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token'",
+                "method.response.header.Access-Control-Allow-Methods": "'*'",
+                "method.response.header.Access-Control-Allow-Origin": "'*'"
+              }
+            }
+          ],
+          "PassthroughBehavior": "NEVER",
+          "RequestTemplates": {
+            "application/json": "{\"statusCode\": 200}"
+          }
+        },
+        "MethodResponses": [
+          {
+            "StatusCode": "200",
+            "ResponseParameters": {
+              "method.response.header.Access-Control-Allow-Headers": true,
+              "method.response.header.Access-Control-Allow-Methods": true,
+              "method.response.header.Access-Control-Allow-Origin": true
+            }
+          }
+        ]
+      }
+    },
     "kumu": {
       "Type": "AWS::Lambda::Function",
       "Properties": {
@@ -60,9 +155,6 @@
         },
         "Environment": {
           "Variables": {
-            "dadas": {
-              "Ref": "envVardadasParameter"
-            },
             "SIGMA_AWS_ACC_ID": {
               "Ref": "AWS::AccountId"
             }
@@ -104,12 +196,216 @@
                     "cognito-idp:ListUsers"
                   ],
                   "Resource": "arn:aws:cognito-idp:us-east-1:318300609668:userpool/us-east-1_HdYJb7Znp"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "dynamodb:Scan"
+                  ],
+                  "Resource": "arn:aws:dynamodb:us-east-1:318300609668:table/KChineseAnimal"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": "s3:ListBucket",
+                  "Resource": "arn:aws:s3:::cloud9-ktest"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "sns:ListSubscriptionsByTopic"
+                  ],
+                  "Resource": "arn:aws:sns:us-east-1:318300609668:Notifications"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "sqs:ReceiveMessage"
+                  ],
+                  "Resource": "arn:aws:sqs:us-east-1:318300609668:KTestSQS"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "translate:translateText"
+                  ],
+                  "Resource": "*"
+                },
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "comprehend:DetectDominantLanguage"
+                  ],
+                  "Resource": "*"
                 }
               ]
             }
           }
         ]
       }
+    },
+    "apigTestAPIDDBresourceANYPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Ref": "kumu"
+        },
+        "SourceArn": {
+          "Fn::Sub": [
+            "arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${__ApiId__}/*/${__Method__}${__Path__}",
+            {
+              "__Method__": "*",
+              "__Path__": "/DDBresource",
+              "__ApiId__": "0itznun7w3"
+            }
+          ]
+        },
+        "Principal": "apigateway.amazonaws.com"
+      }
+    },
+    "cweJBBlogPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Ref": "kumu"
+        },
+        "SourceArn": "arn:aws:events:us-east-1:318300609668:rule/JBBlog",
+        "Principal": "events.amazonaws.com"
+      }
+    },
+    "alexaSK15970ba19cb6kumuPermission": {
+      "Type": "AWS::Lambda::Permission",
+      "Properties": {
+        "Action": "lambda:InvokeFunction",
+        "FunctionName": {
+          "Ref": "kumu"
+        },
+        "Principal": "alexa-appkit.amazon.com",
+        "EventSourceToken": "amzn1.ask.skill.15970ba1-9cb6-4f6f-9b22-e6d5710707f0"
+      }
+    },
+    "cweJBBlogCli0kumu": {
+      "Type": "Custom::cli2cloudformation",
+      "Properties": {
+        "ServiceToken": {
+          "Fn::GetAtt": [
+            "cli2cloudformationkumu",
+            "Arn"
+          ]
+        },
+        "CliCommandCreate": {
+          "Fn::Join": [
+            "",
+            [
+              "aws events enable-rule --name JBBlog --event-bus-name default\naws events put-targets --rule JBBlog --event-bus-name default --targets \"Id=cweJBBlogTarget,Arn=",
+              {
+                "Fn::GetAtt": [
+                  "kumu",
+                  "Arn"
+                ]
+              },
+              "\""
+            ]
+          ]
+        },
+        "CliCommandDelete": "aws events remove-targets --rule JBBlog --event-bus-name default --ids cweJBBlogTarget",
+        "CliCommandUpdate": {
+          "Fn::Join": [
+            "",
+            [
+              "aws events enable-rule --name JBBlog --event-bus-name default\naws events put-targets --rule JBBlog --event-bus-name default --targets \"Id=cweJBBlogTarget,Arn=",
+              {
+                "Fn::GetAtt": [
+                  "kumu",
+                  "Arn"
+                ]
+              },
+              "\""
+            ]
+          ]
+        }
+      }
+    },
+    "cli2cloudformationkumu": {
+      "Type": "AWS::Lambda::Function",
+      "Properties": {
+        "FunctionName": "cli2cloudformationkumu",
+        "Description": "This is a utility lambda generated by Sigma, for bringing CF-unsupported operations into the CF template. Kudos to https://github.com/lucioveloso/cli2cloudformation",
+        "Code": {
+          "S3Bucket": "resources.us-east-1.sigma.slappforge.com",
+          "S3Key": "CF/cf_shell_v2.zip"
+        },
+        "MemorySize": 128,
+        "Handler": "index.lambda_handler",
+        "Timeout": 60,
+        "Runtime": "python3.8",
+        "Layers": [],
+        "TracingConfig": {
+          "Mode": "PassThrough"
+        },
+        "Role": {
+          "Fn::GetAtt": [
+            "cli2cloudformationkumuExecutionRole",
+            "Arn"
+          ]
+        }
+      }
+    },
+    "cli2cloudformationkumuExecutionRole": {
+      "Type": "AWS::IAM::Role",
+      "Properties": {
+        "ManagedPolicyArns": [
+          "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+        ],
+        "AssumeRolePolicyDocument": {
+          "Version": "2012-10-17",
+          "Statement": [
+            {
+              "Action": [
+                "sts:AssumeRole"
+              ],
+              "Effect": "Allow",
+              "Principal": {
+                "Service": [
+                  "lambda.amazonaws.com"
+                ]
+              }
+            }
+          ]
+        },
+        "Policies": [
+          {
+            "PolicyName": "cli2cloudformationkumuPolicy",
+            "PolicyDocument": {
+              "Version": "2012-10-17",
+              "Statement": [
+                {
+                  "Effect": "Allow",
+                  "Action": [
+                    "events:PutTargets",
+                    "events:EnableRule",
+                    "events:RemoveTargets"
+                  ],
+                  "Resource": "arn:aws:events:us-east-1:318300609668:rule/JBBlog"
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "apigTestAPIDeployment1627649567839": {
+      "Type": "AWS::ApiGateway::Deployment",
+      "Properties": {
+        "RestApiId": "0itznun7w3",
+        "Description": "An API deployment generated by Sigma for API TestAPI",
+        "StageName": "test12"
+      },
+      "DependsOn": [
+        "apigTestAPIDDBresourceANY",
+        "apigTestAPIDDBresourceCors"
+      ]
     }
   }
 }
